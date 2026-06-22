@@ -25,3 +25,8 @@ npm run watch     # ng build --watch --configuration development
 ## Development
 - Angular CLI schematics work: `ng generate component`, etc.
 - For debugging in VS Code, use the provided launch configs (`ng serve` / `ng test`).
+
+## Deployment (Cloudflare Workers)
+- `wrangler.jsonc` configures Workers with static assets. Angular builds to `dist/40log/browser/` — **not** `dist/`. If `assets.directory` is wrong, you get 404.
+- For SPA routing, add a `_routes.json` in `public/` (gets copied to output). Without it, non-root paths will 404.
+- Deploy with `npx wrangler deploy`.
